@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -21,11 +20,11 @@ const Index = () => {
     engineSize: "",
     horsepower: ""
   });
-  const [predictedPrice, setPredictedPrice] = useState(null);
+  const [predictedPrice, setPredictedPrice] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
 
-  const handleInputChange = (field, value) => {
+  const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
@@ -99,7 +98,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6 rounded-xl"
-                onClick={() => document.getElementById('predict').scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('predict')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 Start Predicting
                 <TrendingUp className="ml-2 h-5 w-5" />
@@ -384,7 +383,7 @@ const Index = () => {
                   <textarea 
                     id="message" 
                     className="w-full p-3 border border-slate-300 rounded-lg resize-none" 
-                    rows="4" 
+                    rows={4} 
                     placeholder="Your message..."
                   ></textarea>
                 </div>
